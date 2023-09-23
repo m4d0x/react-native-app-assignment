@@ -6,6 +6,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+//Ska innehålla inputfältet för hemligheterna och eventuellt en rullande lista med upvoted hemligheter
 function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -15,7 +16,8 @@ function HomeScreen() {
   );
 }
 
-function DetailsScreen() {
+//denna ska egentligen innehålla en lista med alla hemligheter som finns i databasen
+function PublicSecretsScreen() {
   return (
     <View style={styles.container}>
       <Text>Details Screen</Text>
@@ -23,7 +25,17 @@ function DetailsScreen() {
     </View>
   );
 }
+//Profile screen ska innehålla en lista med alla hemligheter som användaren har skapat för att kunna redigera dem/ta bort dem
+function ProfileScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Profile Screen</Text>
+      <StatusBar style='auto' />
+    </View>
+  );
+}
 
+//Settings screen ska mer eller mindre bara innehålla settings för appen, som att byta tema, byta användare, logga ut, etc.
 function SettingsScreen() {
   return (
     <View style={styles.container}>
@@ -51,17 +63,21 @@ export default function App() {
             }}
           />
           <Tabs.Screen
-            name='Details'
-            component={DetailsScreen}
+            name='Secrets'
+            component={PublicSecretsScreen}
             options={{
               tabBarIcon: (props) => (
-                <Fontisto name='search' size={props.size} color='black' />
+                <Fontisto
+                  name='nav-icon-list-a'
+                  size={props.size}
+                  color='black'
+                />
               ),
             }}
           />
           <Tabs.Screen
-            name='Settings'
-            component={SettingsScreen}
+            name='Profile'
+            component={ProfileScreen}
             options={{
               tabBarIcon: (props) => (
                 <Fontisto
