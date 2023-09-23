@@ -10,6 +10,15 @@ function HomeScreen() {
   );
 }
 
+function DetailsScreen() {
+  return (
+    <View>
+      <Text>Details Screen</Text>
+      <StatusBar style='auto' />
+    </View>
+  );
+}
+
 export default function App() {
   return (
     <View style={styles.container}>
