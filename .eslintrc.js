@@ -6,6 +6,14 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    // Add your rules here
+    'no-console': 'warn',
+    eqeqeq: 'error',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+    'react/prop-types': 'off',
   },
 };
