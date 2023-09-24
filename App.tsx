@@ -19,12 +19,12 @@ function AppContent() {
   const navTheme = {
     ...DefaultTheme,
     colors: {
-      ...DefaultTheme.colors,
-      primary: theme.primary,
-      background: theme.secondary,
-      card: theme.background, // <-- lägg till detta
-      text: theme.text,
-      divider: theme.dividerColor,
+      ...DefaultTheme.colors, // Behåll default colors
+      primary: theme.primary, // Tematisera primärfärg
+      background: theme.secondary, // Tematisera bakgrundsfärg
+      card: theme.background, // Tematisera bakgrundsfärg
+      text: theme.text, //Tematisera textfärg
+      border: theme.borderColor, // Tematisera borderColor
     },
   };
 
@@ -32,12 +32,11 @@ function AppContent() {
     <SafeAreaProvider
       style={{
         flex: 1,
-        backgroundColor: theme.background,
-        borderBottomColor: theme.dividerColor,
+        // backgroundColor: theme.background, // Tematisera bakgrundsfärg
+        // borderBottomColor: theme.dividerColor, // Tematisera dividerColor
       }}
     >
       <NavigationContainer theme={navTheme}>
-        {/* Använd 'statusBarStyle' från temat här */}
         <StatusBar style={theme.statusBarStyle} />
         <RootTabsNavigator />
       </NavigationContainer>
