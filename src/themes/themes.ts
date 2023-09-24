@@ -2,7 +2,7 @@ export const lightTheme = {
   primary: '#ffffff',
   secondary: '#000000',
   background: '#ffffff',
-  dividerColor: '#E0E0E0',
+  // dividerColor: '#E0E0E0',
   text: '#000000',
   error: '#ff0000',
   buttonColor: 'blue',
