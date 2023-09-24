@@ -12,6 +12,7 @@ interface Theme {
   buttonColor: string;
   statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
   activeIconColor: string;
+  outerBackgroundColor: string;
 }
 
 type ThemeProviderProps = {

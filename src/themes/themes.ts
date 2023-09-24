@@ -9,6 +9,7 @@ export const lightTheme = {
   statusBarStyle: 'dark',
   activeIconColor: 'gray',
   borderColor: 'transparent',
+  outerBackgroundColor: 'rgb(255, 255, 255)', // Lägg till den önskade bakgrundsfärgen för yttre diven i ljusläge
 };
 
 export const darkTheme = {
@@ -22,4 +23,5 @@ export const darkTheme = {
   statusBarStyle: 'light',
   activeIconColor: 'red',
   borderColor: 'transparent',
+  outerBackgroundColor: 'rgb(0, 0, 0)', // Lägg till den önskade bakgrundsfärgen för yttre diven i mörkt läge
 };

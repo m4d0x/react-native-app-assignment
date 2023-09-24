@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import ThemedToggleIcon from '../components/ThemedToggleIcon'; // Use default import
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function SettingsScreen() {
-  const { theme, toggleTheme } = useTheme(); // Use toggleTheme from context
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <View
@@ -16,10 +17,10 @@ export default function SettingsScreen() {
     >
       <Text style={{ color: theme.secondary }}>Settings Screen</Text>
       <TouchableOpacity
-        onPress={toggleTheme} // Use toggleTheme from context
-        style={{ padding: 20, backgroundColor: theme.secondary, marginTop: 20 }}
+        onPress={toggleTheme}
+        style={{ padding: 20, marginTop: 20 }}
       >
-        <Text style={{ color: theme.primary }}>Toggle Theme</Text>
+        <ThemedToggleIcon />
       </TouchableOpacity>
     </View>
   );
