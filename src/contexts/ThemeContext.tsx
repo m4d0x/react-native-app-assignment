@@ -6,12 +6,13 @@ interface Theme {
   secondary: string;
   background: string;
   borderColor: string; // Lägg till borderColor
-  dividerColor: string; // Om du behöver en egen färg för divider
+  // dividerColor: string; // Om du behöver en egen färg för divider
   text: string;
   error: string;
   buttonColor: string;
   statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
   activeIconColor: string;
+  outerBackgroundColor: string;
 }
 
 type ThemeProviderProps = {
