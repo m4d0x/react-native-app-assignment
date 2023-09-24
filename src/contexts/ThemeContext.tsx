@@ -13,6 +13,8 @@ interface Theme {
   statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
   activeIconColor: string;
   outerBackgroundColor: string;
+  textBorderColor: string; // Add a borderColor for text in light theme
+  textPlaceholderColor: string; // Placeholder text color in light theme
 }
 
 type ThemeProviderProps = {

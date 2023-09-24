@@ -1,48 +1,49 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useTheme } from '../contexts/ThemeContext'; // <-- import useTheme from your custom file
+import AnswerText from '../components/AnswerText';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function HomeScreen() {
-  const { theme } = useTheme(); // <-- use the theme from context
+  const { theme } = useTheme();
   const [text, setText] = useState<string>('');
   const [storedText, setStoredText] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const fadeAnim = 1;
 
   const handleYes = () => {
     if (text.trim() === '') {
-      setError("You can't keep a secret if there is none!"); // Sätt ett felmeddelande
-      return;
+      setStoredText("You can't keep a secret if there is none!");
+    } else {
+      setStoredText('Your secret is safe with me.');
     }
-    setStoredText(text);
     setText('');
-    setError(null); // Nollställ felmeddelandet
   };
 
   const handleNo = () => {
     setText('');
-    setError(null); // Nollställ felmeddelandet
+    setStoredText('Catchy text for the "No" button.');
   };
 
   return (
     <View style={{ ...styles.container, backgroundColor: theme.background }}>
+      <AnswerText text={storedText} fadeAnim={fadeAnim} />
       <Text style={{ ...styles.questionText, color: theme.text }}>
         What's your dirty lil´ secret?
       </Text>
       <TextInput
-        style={{ ...styles.input, borderColor: theme.text, color: theme.text }}
+        style={{
+          ...styles.input,
+          borderColor: theme.textBorderColor,
+          color: theme.text,
+        }}
         value={text}
         onChangeText={(newText) => setText(newText)}
+        placeholder='Type here...'
+        placeholderTextColor={theme.textPlaceholderColor}
       />
       <View style={styles.buttonContainer}>
         <Button title='Yes' color={theme.buttonColor} onPress={handleYes} />
         <Button title='No' color={theme.buttonColor} onPress={handleNo} />
       </View>
-      {error && (
-        <Text style={{ ...styles.errorText, color: theme.error }}>{error}</Text>
-      )}
-      {storedText && (
-        <Text style={{ color: theme.text }}>Your secret is safe with me.</Text>
-      )}
     </View>
   );
 }
@@ -69,8 +70,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 15,
-  },
-  errorText: {
-    marginBottom: 10,
   },
 });

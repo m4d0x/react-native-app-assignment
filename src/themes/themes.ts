@@ -10,6 +10,9 @@ export const lightTheme = {
   activeIconColor: 'gray',
   borderColor: 'transparent',
   outerBackgroundColor: 'rgb(255, 255, 255)', // Lägg till den önskade bakgrundsfärgen för yttre diven i ljusläge
+  textBorderColor: 'darkgray', // Add a borderColor for text in light theme
+  // text: '#000000', // Adjust text color to be darker in light theme
+  textPlaceholderColor: 'gray', // Placeholder text color in light theme
 };
 
 export const darkTheme = {
@@ -24,4 +27,7 @@ export const darkTheme = {
   activeIconColor: 'red',
   borderColor: 'transparent',
   outerBackgroundColor: 'rgb(0, 0, 0)', // Lägg till den önskade bakgrundsfärgen för yttre diven i mörkt läge
+  textBorderColor: 'lightgray', // Add a borderColor for text in dark theme
+  // text: '#f0f0f0', // Adjust text color to be lighter in dark theme
+  textPlaceholderColor: 'lightgray', // Placeholder text color in dark theme
 };
