@@ -1,12 +1,14 @@
-import React from 'react';
-import { ThemeProvider } from './ThemeProvider';
+// import React from 'react';
+// import { ThemeProvider } from './ThemeProvider';
 
-export const withTheme = (Component: React.ComponentType<any>) => {
-  return (props: any) => {
-    return (
-      <ThemeProvider>
-        <Component {...props} />
-      </ThemeProvider>
-    );
-  };
-};
+// export function withTheme(Component: React.ComponentType<any>) {
+//   return function ThemedComponent(props: any) {
+//     return (
+//       <ThemeProvider>
+//         <Component {...props} />
+//       </ThemeProvider>
+//     );
+//   };
+// }
+
+//varför har man sånt här?

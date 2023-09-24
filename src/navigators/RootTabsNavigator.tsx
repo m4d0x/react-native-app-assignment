@@ -1,7 +1,7 @@
 import { Fontisto } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useTheme } from '@react-navigation/native';
 import React from 'react';
+import { useTheme } from '../contexts/ThemeContext'; // <-- import your custom useTheme
 import HomeScreen from '../screens/HomeScreen';
 import PublicSecretsScreen from '../screens/PublicSecretsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -15,16 +15,28 @@ type RootTabsParamList = {
 const Tabs = createBottomTabNavigator<RootTabsParamList>();
 
 export default function RootTabsNavigator() {
-  const { colors } = useTheme();
+  const { theme } = useTheme(); // <-- use your custom theme
 
   return (
-    <Tabs.Navigator>
+    <Tabs.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: theme.activeIconColor, // This changes both icon and text color when active
+        tabBarInactiveTintColor: theme.secondary, // This changes both icon and text color when inactive
+        tabBarStyle: {
+          backgroundColor: theme.background,
+        },
+      }}
+    >
       <Tabs.Screen
         name='Home'
         component={HomeScreen}
         options={{
           tabBarIcon: (props) => (
-            <Fontisto name='home' size={props.size} color={props.color} />
+            <Fontisto
+              name='home'
+              size={props.size}
+              color={props.focused ? theme.activeIconColor : props.color}
+            />
           ),
         }}
       />
@@ -36,7 +48,7 @@ export default function RootTabsNavigator() {
             <Fontisto
               name='nav-icon-list-a'
               size={props.size}
-              color={props.color}
+              color={props.focused ? theme.activeIconColor : props.color}
             />
           ),
         }}
@@ -49,7 +61,7 @@ export default function RootTabsNavigator() {
             <Fontisto
               name='player-settings'
               size={props.size}
-              color={props.color}
+              color={props.focused ? theme.activeIconColor : props.color}
             />
           ),
         }}

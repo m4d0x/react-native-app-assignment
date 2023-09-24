@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useTheme } from '../contexts/ThemeContext'; // <-- import useTheme from your custom file
 
 export default function HomeScreen() {
+  const { theme } = useTheme(); // <-- use the theme from context
   const [text, setText] = useState<string>('');
   const [storedText, setStoredText] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -22,19 +24,25 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.questionText}>What's your dirty lil´ secret?</Text>
+    <View style={{ ...styles.container, backgroundColor: theme.background }}>
+      <Text style={{ ...styles.questionText, color: theme.text }}>
+        What's your dirty lil´ secret?
+      </Text>
       <TextInput
-        style={styles.input}
+        style={{ ...styles.input, borderColor: theme.text, color: theme.text }}
         value={text}
         onChangeText={(newText) => setText(newText)}
       />
       <View style={styles.buttonContainer}>
-        <Button title='Yes' onPress={handleYes} />
-        <Button title='No' onPress={handleNo} />
+        <Button title='Yes' color={theme.buttonColor} onPress={handleYes} />
+        <Button title='No' color={theme.buttonColor} onPress={handleNo} />
       </View>
-      {error && <Text style={styles.errorText}>{error}</Text>}
-      {storedText && <Text>Your secret is safe with me.</Text>}
+      {error && (
+        <Text style={{ ...styles.errorText, color: theme.error }}>{error}</Text>
+      )}
+      {storedText && (
+        <Text style={{ color: theme.text }}>Your secret is safe with me.</Text>
+      )}
     </View>
   );
 }
@@ -42,7 +50,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -50,6 +57,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '80%',
     marginBottom: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -62,7 +71,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   errorText: {
-    color: 'red',
     marginBottom: 10,
   },
 });
