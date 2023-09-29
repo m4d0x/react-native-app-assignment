@@ -1,10 +1,11 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import ThemedToggleIcon from '../components/ThemedToggleIcon'; // Use default import
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme, useToggleTheme } from '../contexts/ThemeContext';
 
 export default function SettingsScreen() {
-  const { theme, toggleTheme } = useTheme();
+  const theme = useTheme();
+  const toggleTheme = useToggleTheme();
 
   return (
     <View

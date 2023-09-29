@@ -1,6 +1,7 @@
 import { Fontisto } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
+
 import { useTheme } from '../contexts/ThemeContext'; // <-- import your custom useTheme
 import HomeScreen from '../screens/HomeScreen';
 import PublicSecretsScreen from '../screens/PublicSecretsScreen';
@@ -15,7 +16,7 @@ type RootTabsParamList = {
 const Tabs = createBottomTabNavigator<RootTabsParamList>();
 
 export default function RootTabsNavigator() {
-  const { theme } = useTheme(); // <-- use your custom theme
+  const theme = useTheme(); // <-- use your custom theme
 
   return (
     <Tabs.Navigator
@@ -28,12 +29,12 @@ export default function RootTabsNavigator() {
       }}
     >
       <Tabs.Screen
-        name='Home'
+        name="Home"
         component={HomeScreen}
         options={{
           tabBarIcon: (props) => (
             <Fontisto
-              name='home'
+              name="home"
               size={props.size}
               color={props.focused ? theme.activeIconColor : props.color}
             />
@@ -41,12 +42,12 @@ export default function RootTabsNavigator() {
         }}
       />
       <Tabs.Screen
-        name='Secrets'
+        name="Secrets"
         component={PublicSecretsScreen}
         options={{
           tabBarIcon: (props) => (
             <Fontisto
-              name='nav-icon-list-a'
+              name="nav-icon-list-a"
               size={props.size}
               color={props.focused ? theme.activeIconColor : props.color}
             />
@@ -54,12 +55,12 @@ export default function RootTabsNavigator() {
         }}
       />
       <Tabs.Screen
-        name='Settings'
+        name="Settings"
         component={SettingsScreen}
         options={{
           tabBarIcon: (props) => (
             <Fontisto
-              name='player-settings'
+              name="player-settings"
               size={props.size}
               color={props.focused ? theme.activeIconColor : props.color}
             />

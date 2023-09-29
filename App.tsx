@@ -14,7 +14,7 @@ function App() {
 }
 
 function AppContent() {
-  const { theme } = useTheme();
+  const theme = useTheme();
 
   const navTheme = {
     ...DefaultTheme,

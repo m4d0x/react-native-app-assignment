@@ -1,11 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-import { useTheme } from '../contexts/ThemeContext';
+
+import { useTheme, useToggleTheme } from '../contexts/ThemeContext';
 import { lightTheme } from '../themes/themes';
 
 const ThemedToggleIcon = () => {
-  const { theme, toggleTheme } = useTheme();
+  const theme = useTheme();
+  const toggleTheme = useToggleTheme();
 
   const iconColor = theme.text;
 
