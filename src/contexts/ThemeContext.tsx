@@ -1,21 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { darkTheme, lightTheme } from '../themes/themes';
-
-interface Theme {
-  primary: string;
-  secondary: string;
-  background: string;
-  borderColor: string; // Lägg till borderColor
-  // dividerColor: string; // Om du behöver en egen färg för divider
-  text: string;
-  error: string;
-  buttonColor: string;
-  statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
-  activeIconColor: string;
-  outerBackgroundColor: string;
-  textBorderColor: string; // Add a borderColor for text in light theme
-  textPlaceholderColor: string; // Placeholder text color in light theme
-}
+import { Theme, darkTheme, lightTheme } from '../themes/themes';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -23,20 +7,16 @@ type ThemeProviderProps = {
 
 interface ThemeContextProps {
   theme: Theme;
-  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
-export const ThemeContext = createContext<ThemeContextProps | null>(null);
+export const ThemeContext = createContext<ThemeContextProps>(null as any);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(lightTheme as Theme);
 
-  const toggleTheme = () => {
-    setTheme((theme === lightTheme ? darkTheme : lightTheme) as Theme);
-  };
-
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -44,8 +24,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
+  return context.theme;
 };
+
+export const useToggleTheme = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const toggleTheme = () => {
+    setTheme(theme === lightTheme ? darkTheme : lightTheme);
+  };
+
+  return toggleTheme;
+};
+
+// const toggleTheme = useToggleTheme();
+
+// toggleTheme(); // Kör denna när du vill byta tema

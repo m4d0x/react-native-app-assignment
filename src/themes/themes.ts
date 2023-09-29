@@ -1,4 +1,20 @@
-export const lightTheme = {
+export interface Theme {
+  primary: string;
+  secondary: string;
+  background: string;
+  borderColor: string; // Lägg till borderColor
+  // dividerColor: string; // Om du behöver en egen färg för divider
+  text: string;
+  error: string;
+  buttonColor: string;
+  statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
+  activeIconColor: string;
+  outerBackgroundColor: string;
+  textBorderColor: string; // Add a borderColor for text in light theme
+  textPlaceholderColor: string; // Placeholder text color in light theme
+}
+
+export const lightTheme: Theme = {
   primary: '#ffffff',
   secondary: '#000000',
   background: '#ffffff',
@@ -15,11 +31,11 @@ export const lightTheme = {
   textPlaceholderColor: 'gray', // Placeholder text color in light theme
 };
 
-export const darkTheme = {
+export const darkTheme: Theme = {
   primary: '#000000',
   secondary: '#ffffff',
   background: '#000000',
-  dividerColor: '#424242',
+  // dividerColor: '#424242',
   text: '#ffffff',
   error: '#ff0000',
   buttonColor: 'red',

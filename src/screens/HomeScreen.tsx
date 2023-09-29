@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+
 import AnswerText from '../components/AnswerText';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function HomeScreen() {
-  const { theme } = useTheme();
+  const theme = useTheme();
   const [text, setText] = useState<string>('');
   const [storedText, setStoredText] = useState<string | null>(null);
   const fadeAnim = 1;
@@ -37,12 +38,12 @@ export default function HomeScreen() {
         }}
         value={text}
         onChangeText={(newText) => setText(newText)}
-        placeholder='Type here...'
+        placeholder="Type here..."
         placeholderTextColor={theme.textPlaceholderColor}
       />
       <View style={styles.buttonContainer}>
-        <Button title='Yes' color={theme.buttonColor} onPress={handleYes} />
-        <Button title='No' color={theme.buttonColor} onPress={handleNo} />
+        <Button title="Yes" color={theme.buttonColor} onPress={handleYes} />
+        <Button title="No" color={theme.buttonColor} onPress={handleNo} />
       </View>
     </View>
   );
