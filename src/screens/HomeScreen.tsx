@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import AnswerText from '../components/AnswerText';
+import AnswerText from '../components/HomeReactionText';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function HomeScreen() {
   const theme = useTheme();
   const [text, setText] = useState<string>('');
-  const [storedText, setStoredText] = useState<string | null>(null);
+  const [storedText, setHomeReactionText] = useState<string | null>(null);
   const fadeAnim = 1;
 
   const handleYes = () => {
     if (text.trim() === '') {
-      setStoredText("You can't keep a secret if there is none!");
+      setHomeReactionText("You can't keep a secret if there is none!");
     } else {
-      setStoredText('Your secret is safe with me.');
+      setHomeReactionText('Your secret is safe with me.');
     }
     setText('');
   };
 
   const handleNo = () => {
     setText('');
-    setStoredText('Catchy text for the "No" button.');
+    setHomeReactionText('Catchy text for the "No" button.');
   };
 
   return (

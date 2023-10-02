@@ -2,13 +2,16 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { KeepAwakeProvider } from './src/contexts/KeepAwakeContext';
 import { ThemeProvider, useTheme } from './src/contexts/ThemeContext';
 import RootTabsNavigator from './src/navigators/RootTabsNavigator';
 
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <KeepAwakeProvider>
+        <AppContent />
+      </KeepAwakeProvider>
     </ThemeProvider>
   );
 }
