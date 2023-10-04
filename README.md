@@ -1,0 +1,3 @@
+//haptics?
+//kamera?
+//ljud?

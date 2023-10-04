@@ -1,49 +1,60 @@
+// themes.ts
 export interface Theme {
   primary: string;
   secondary: string;
   background: string;
-  borderColor: string; // Lägg till borderColor
-  // dividerColor: string; // Om du behöver en egen färg för divider
+  borderColor: string;
   text: string;
   error: string;
-  buttonColor: string;
   statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
-  activeIconColor: string;
-  outerBackgroundColor: string;
-  textBorderColor: string; // Add a borderColor for text in light theme
-  textPlaceholderColor: string; // Placeholder text color in light theme
+  tabBarActiveTintColor: string;
+  tabBarInactiveTintColor: string;
 }
 
 export const lightTheme: Theme = {
   primary: '#ffffff',
-  secondary: '#000000',
+  secondary: '#ffffff',
   background: '#ffffff',
-  // dividerColor: '#E0E0E0',
+  borderColor: '#ffffff',
   text: '#000000',
   error: '#ff0000',
-  buttonColor: 'blue',
-  statusBarStyle: 'dark',
-  activeIconColor: 'gray',
-  borderColor: 'transparent',
-  outerBackgroundColor: 'rgb(255, 255, 255)', // Lägg till den önskade bakgrundsfärgen för yttre diven i ljusläge
-  textBorderColor: 'darkgray', // Add a borderColor for text in light theme
-  // text: '#000000', // Adjust text color to be darker in light theme
-  textPlaceholderColor: 'gray', // Placeholder text color in light theme
+  statusBarStyle: 'light',
+  tabBarActiveTintColor: '#ff0000',
+  tabBarInactiveTintColor: '#303',
 };
 
 export const darkTheme: Theme = {
   primary: '#000000',
-  secondary: '#ffffff',
+  secondary: '#blue',
   background: '#000000',
-  // dividerColor: '#424242',
+  borderColor: '#000000',
   text: '#ffffff',
-  error: '#ff0000',
-  buttonColor: 'red',
-  statusBarStyle: 'light',
-  activeIconColor: 'red',
-  borderColor: 'transparent',
-  outerBackgroundColor: 'rgb(0, 0, 0)', // Lägg till den önskade bakgrundsfärgen för yttre diven i mörkt läge
-  textBorderColor: 'lightgray', // Add a borderColor for text in dark theme
-  // text: '#f0f0f0', // Adjust text color to be lighter in dark theme
-  textPlaceholderColor: 'lightgray', // Placeholder text color in dark theme
+  statusBarStyle: 'dark',
+  error: '#ff4b4b',
+  tabBarActiveTintColor: '#ff0000',
+  tabBarInactiveTintColor: '#f0f000',
 };
+
+//excluded parts from interface;
+// surface: string;
+// buttonColor: string;
+// outerBackgroundColor: string;
+// textBorderColor: string;
+// textPlaceholderColor: string;
+// iconColor: string;
+
+//exlucded parts from lightTheme
+// surface: '#ffffff',
+// buttonColor: '#000000',
+// outerBackgroundColor: '#f0f0f0',
+// textBorderColor: '#c0c0c0',
+// textPlaceholderColor: '#a0a0a0',
+// iconColor: '#709',
+
+//exluded parts from darkTheme
+// surface: '#121212',
+// buttonColor: '#ffffff',
+// outerBackgroundColor: '#606060',
+// textBorderColor: '#505050',
+// textPlaceholderColor: '#808080',
+// iconColor: '#ffffff',
