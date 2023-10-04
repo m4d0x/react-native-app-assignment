@@ -25,25 +25,25 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={{ ...styles.container, backgroundColor: theme.background }}>
+    <View style={{ ...styles.container }}>
       <AnswerText text={storedText} fadeAnim={fadeAnim} />
-      <Text style={{ ...styles.questionText, color: theme.text }}>
+      <Text style={{ ...styles.questionText, color: theme.theme.text }}>
         What's your dirty lil´ secret?
       </Text>
       <TextInput
         style={{
           ...styles.input,
-          borderColor: theme.textBorderColor,
-          color: theme.text,
+          // borderColor: theme.textBorderColor,
+          color: theme.theme.text,
         }}
         value={text}
         onChangeText={(newText) => setText(newText)}
         placeholder="Type here..."
-        placeholderTextColor={theme.textPlaceholderColor}
+        // placeholderTextColor={theme.textPlaceholderColor}
       />
       <View style={styles.buttonContainer}>
-        <Button title="Yes" color={theme.buttonColor} onPress={handleYes} />
-        <Button title="No" color={theme.buttonColor} onPress={handleNo} />
+        <Button title="Yes" onPress={handleYes} />
+        <Button title="No" onPress={handleNo} />
       </View>
     </View>
   );

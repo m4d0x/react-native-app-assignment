@@ -1,8 +1,9 @@
 import { Fontisto } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Text } from 'react-native';
 
-import { useTheme } from '../contexts/ThemeContext'; // <-- import your custom useTheme
+import ThemeContext from '../contexts/ThemeContext';
 import HomeScreen from '../screens/HomeScreen';
 import PublicSecretsScreen from '../screens/PublicSecretsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -16,27 +17,34 @@ type RootTabsParamList = {
 const Tabs = createBottomTabNavigator<RootTabsParamList>();
 
 export default function RootTabsNavigator() {
-  const theme = useTheme(); // <-- use your custom theme
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <Tabs.Navigator
-      screenOptions={{
-        tabBarActiveTintColor: theme.activeIconColor, // This changes both icon and text color when active
-        tabBarInactiveTintColor: theme.secondary, // This changes both icon and text color when inactive
-        tabBarStyle: {
-          backgroundColor: theme.background,
-        },
-      }}
-    >
+    <Tabs.Navigator>
       <Tabs.Screen
         name="Home"
         component={HomeScreen}
         options={{
+          tabBarLabel: (props) => (
+            <Text
+              style={{
+                color: props.focused
+                  ? theme.tabBarActiveTintColor
+                  : theme.tabBarInactiveTintColor,
+              }}
+            >
+              Secrets
+            </Text>
+          ),
           tabBarIcon: (props) => (
             <Fontisto
               name="home"
               size={props.size}
-              color={props.focused ? theme.activeIconColor : props.color}
+              color={
+                props.focused
+                  ? theme.tabBarActiveTintColor
+                  : theme.tabBarInactiveTintColor
+              }
             />
           ),
         }}
@@ -45,11 +53,26 @@ export default function RootTabsNavigator() {
         name="Secrets"
         component={PublicSecretsScreen}
         options={{
+          tabBarLabel: (props) => (
+            <Text
+              style={{
+                color: props.focused
+                  ? theme.tabBarActiveTintColor
+                  : theme.tabBarInactiveTintColor,
+              }}
+            >
+              Secrets
+            </Text>
+          ),
           tabBarIcon: (props) => (
             <Fontisto
-              name="nav-icon-list-a"
+              name="nav-icon-list"
               size={props.size}
-              color={props.focused ? theme.activeIconColor : props.color}
+              color={
+                props.focused
+                  ? theme.tabBarActiveTintColor
+                  : theme.tabBarInactiveTintColor
+              }
             />
           ),
         }}
@@ -58,11 +81,26 @@ export default function RootTabsNavigator() {
         name="Settings"
         component={SettingsScreen}
         options={{
+          tabBarLabel: (props) => (
+            <Text
+              style={{
+                color: props.focused
+                  ? theme.tabBarActiveTintColor
+                  : theme.tabBarInactiveTintColor,
+              }}
+            >
+              Secrets
+            </Text>
+          ),
           tabBarIcon: (props) => (
             <Fontisto
               name="player-settings"
               size={props.size}
-              color={props.focused ? theme.activeIconColor : props.color}
+              color={
+                props.focused
+                  ? theme.tabBarActiveTintColor
+                  : theme.tabBarInactiveTintColor
+              }
             />
           ),
         }}

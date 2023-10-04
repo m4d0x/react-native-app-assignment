@@ -1,42 +1,24 @@
-import { createContext, useContext, useState } from 'react';
-import { Theme, darkTheme, lightTheme } from '../themes/themes';
+//ThemeContext.tsx:
+import { createContext, useContext } from 'react';
 
-type ThemeProviderProps = {
-  children: React.ReactNode;
-};
+import { Theme } from '../themes/themes';
 
 interface ThemeContextProps {
   theme: Theme;
-  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
+  setThemes: (newTheme: Theme) => void;
+  setThemeBasedOnBoolean: (isDarkMode: boolean) => void;
+  useStatusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
 }
 
-export const ThemeContext = createContext<ThemeContextProps>(null as any);
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(lightTheme as Theme);
-
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+const ThemeContext = createContext<ThemeContextProps | null>(null);
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  return context.theme;
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
 };
 
-export const useToggleTheme = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
-
-  const toggleTheme = () => {
-    setTheme(theme === lightTheme ? darkTheme : lightTheme);
-  };
-
-  return toggleTheme;
-};
-
-// const toggleTheme = useToggleTheme();
-
-// toggleTheme(); // Kör denna när du vill byta tema
+export default ThemeContext;
