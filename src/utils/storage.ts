@@ -1,14 +1,31 @@
 //storage.ts
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Funktion för att spara en hemlighet
+// Definiera en typ för en hemlighet
+type Secret = {
+  id: string;
+  author: string;
+  text: string;
+  timestamp: string;
+};
+
 export const storeData = async (value: string) => {
   try {
     // Först, hämta den befintliga arrayen av hemligheter
-    const existingData = await getData();
+    const existingData: Secret[] | null = await getData();
+
+    // Skapa en ny hemlighet
+    const newSecret: Secret = {
+      id: Date.now().toString(), // En unik ID baserad på nuvarande tid
+      author: 'anonymous', // Hårdkodad till "anonymous"
+      text: value,
+      timestamp: new Date().toISOString(),
+    };
 
     // Lägg till den nya hemligheten till arrayen
-    const updatedData = existingData ? [...existingData, value] : [value];
+    const updatedData = existingData
+      ? [...existingData, newSecret]
+      : [newSecret];
 
     // Omvandla till JSON och lagra
     const jsonValue = JSON.stringify(updatedData);
