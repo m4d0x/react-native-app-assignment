@@ -1,4 +1,4 @@
-import { useFonts } from '@expo-google-fonts/roboto';
+import { useFonts } from 'expo-font';
 import * as Haptics from 'expo-haptics'; // Lägg till denna rad
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -16,7 +16,7 @@ export default function HomeScreen() {
   const fadeAnim = 1;
 
   const [fontsLoaded] = useFonts({
-    CustomFontName: require('../assets/fonts/YourFontFile.ttf'), // Ändra filtypen till .ttf
+    Spiderfingers: require('../assets/fonts/Spiderfingers-OOyA.ttf'), // Ändra här
   });
 
   if (!fontsLoaded) {
@@ -50,7 +50,7 @@ export default function HomeScreen() {
         style={{
           ...styles.questionText,
           color: theme.theme.text,
-          fontFamily: 'CustomFontName',
+          fontFamily: 'Spiderfingers',
         }}
       >
         {' '}
