@@ -9,6 +9,7 @@
 - `LinearGradient`
 - `AsyncStorage`
 - `KeepAwake`
+- `Haptic`
 
 The base background color is `#ffffff` for light mode and `#000000` for dark mode.
 

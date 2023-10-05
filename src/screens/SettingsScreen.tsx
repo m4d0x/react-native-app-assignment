@@ -13,13 +13,13 @@ export default function SettingsScreen() {
   const { theme, toggleTheme, setThemeBasedOnBoolean } = useTheme();
 
   const handleToggleTheme = () => {
-    Haptics.selectionAsync(); // eller Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
     toggleTheme();
     toggleDarkMode();
   };
 
   const toggleKeepAwakeCallback = (newState: boolean) => {
-    Haptics.selectionAsync(); // eller Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     if (newState) {
       activateKeepAwakeAsync();
     } else {

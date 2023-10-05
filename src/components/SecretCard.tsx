@@ -1,4 +1,5 @@
 //SecretCard.tsx
+import * as Haptics from 'expo-haptics';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -25,6 +26,9 @@ export default function SecretCard({ secret }: SecretCardProps) {
   const [isLiked, setIsLiked] = useState(false); // För att hålla koll på om en secret är gillad eller inte
 
   const handleLikePress = async () => {
+    // Utlösa haptisk feedback när knappen trycks på
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     setIsLiked(!isLiked); // Uppdatera isLiked när knappen trycks på
     // Uppdatera det lokala state-värdet baserat på isLiked
     setLikes(isLiked ? likes - 1 : likes + 1);
