@@ -3,7 +3,7 @@ import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { ToggleIcon } from '../components/ToggleIcon';
+import { ToggleIcon } from '../components/AnimatedToggleIcon';
 import { useTheme } from '../contexts/ThemeContext';
 import { useToggle } from '../hooks/useToggle';
 import { darkTheme } from '../themes/themes';

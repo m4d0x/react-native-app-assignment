@@ -9,6 +9,10 @@ interface ThemeContextProps {
   setThemes: (newTheme: Theme) => void;
   setThemeBasedOnBoolean: (isDarkMode: boolean) => void;
   useStatusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
+  buttonTextColor: string;
+  buttonBackgroundColor: string;
+  toggleActiveColor: string;
+  toggleInactiveColor: string;
 }
 
 const ThemeContext = createContext<ThemeContextProps | null>(null);
