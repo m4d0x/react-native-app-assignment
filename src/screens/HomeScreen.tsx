@@ -15,8 +15,10 @@ export default function HomeScreen() {
 
   const handleYes = async () => {
     if (text.trim() === '') {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy); // Heavy feedback
       setHomeReactionText("You can't keep a secret if there is none!");
     } else {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); // Medium feedback
       setHomeReactionText('Your secret is safe with me.');
       await storeData(text); // Lagrar texten
     }
@@ -24,6 +26,7 @@ export default function HomeScreen() {
   };
 
   const handleNo = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); // Medium feedback
     setText('');
     setHomeReactionText('Catchy text for the "No" button.');
   };
