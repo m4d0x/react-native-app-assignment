@@ -46,7 +46,15 @@ export default function HomeScreen() {
       <View style={styles.animatedView}>
         <AnimatedResponseText text={storedText} fadeAnim={fadeAnim} />
       </View>
-      <Text style={{ ...styles.questionText, color: theme.theme.text }}>
+      <Text
+        style={{
+          ...styles.questionText,
+          color: theme.theme.text,
+          fontFamily: 'CustomFontName',
+        }}
+      >
+        {' '}
+        {/* Använd det anpassade teckensnittet här */}
         What's your dirty lil´ secret?
       </Text>
       <ThemedTextInput
