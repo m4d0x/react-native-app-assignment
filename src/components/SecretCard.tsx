@@ -3,13 +3,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { useTheme } from '../contexts/ThemeContext';
-import ThemedLikeButton from './ThemedLikeButton';
 
 type Secret = {
   id: string;
   author: string;
   text: string;
   timestamp: string;
+  likes: number; // Nytt attribut för att hålla reda på antalet likes som getts till en secret
 };
 
 type SecretCardProps = {
@@ -27,7 +27,7 @@ export default function SecretCard({ secret }: SecretCardProps) {
           <Text style={{ color: theme.cardText }}>{secret.timestamp}</Text>
         </View>
         <View style={styles.iconContainer}>
-          <ThemedLikeButton onPress={isLiked} />
+          {/* <ThemedLikeButton onPress={} /> */}
           {/* Här kan du lägga till fler ikoner om du vill */}
         </View>
       </View>
