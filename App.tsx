@@ -1,5 +1,6 @@
 // App.tsx
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { Audio } from 'expo-av';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native'; // Lägg till Button för att skapa en temaväxlingsknapp
@@ -12,13 +13,37 @@ import { useStatusBarStyle } from './src/hooks/useStatusBarStyle';
 import RootTabsNavigator from './src/navigators/RootTabsNavigator';
 
 function App() {
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
+
   function AppContent() {
+    const [soundObj, setSoundObj] = useState<Audio.Sound | null>(null); // rename from sound to soundObj
+
+    const loadSound = async () => {
+      const { sound } = await Audio.Sound.createAsync(
+        require('./src/assets/audio/ofeliasdream.mp3'),
+        {
+          shouldPlay: true,
+          isLooping: true,
+        },
+      );
+      setSoundObj(sound);
+    };
+
+    useEffect(() => {
+      loadSound();
+
+      return () => {
+        if (soundObj) {
+          soundObj.unloadAsync();
+        }
+      };
+    }, []);
+
     useStatusBarStyle();
     const [statusBarStyle, setStatusBarStyle] = useState<
       'auto' | 'inverted' | 'light' | 'dark'
     >('auto');
     const { theme } = useTheme();
-    // const toggleTheme = useTheme(); // Hämta toggleTheme funktionen
 
     useEffect(() => {
       setStatusBarStyle(
