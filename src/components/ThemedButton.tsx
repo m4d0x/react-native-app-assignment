@@ -1,38 +1,53 @@
-import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
-import { useTheme } from 'react-native-elements';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useToggle } from '../hooks/useToggle';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-interface ThemedLikeButtonProps {
-  theme: string;
-  like: boolean;
+import { useTheme } from '../contexts/ThemeContext'; // Anpassa detta efter din faktiska import
+
+// type ButtonProps = React.ComponentProps<typeof Button>;
+
+interface ThemedButtonProps {
+  title: string;
   onPress: () => void;
-  style?: StyleProp<ViewStyle>;
+  // ... Fler props om nödvändigt
 }
 
-const ThemedLikeButton: React.FC<ThemedLikeButtonProps> = ({
+export const ThemedButton: React.FC<ThemedButtonProps> = ({
+  title,
   onPress,
-  style,
+  ...rest
 }) => {
   const theme = useTheme();
-  const [isLiked, toggleLike] = useToggle(
-    false,
-    (currentState) => !currentState,
-    'likeKey',
-  );
-
-  const handlePress = () => {
-    toggleLike();
-    onPress();
-  };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={style}>
-      <AntDesign
-        name={isLiked ? 'heart' : 'hearto'}
-        size={24}
-        color={isLiked ? theme.toggleActiveColor : theme.toggleInactiveColor}
-      />
-    </TouchableOpacity>
+    <View>
+      <TouchableOpacity
+        style={[
+          styles.button,
+          { backgroundColor: theme.buttonBackgroundColor },
+        ]}
+        onPress={onPress}
+      >
+        <Text style={[styles.text, { color: theme.buttonTextColor }]}>
+          {title}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 22,
+    borderRadius: 4, //rundade hörn
+    elevation: 3,
+  },
+  text: {
+    fontSize: 20,
+    lineHeight: 22,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+  },
+});
