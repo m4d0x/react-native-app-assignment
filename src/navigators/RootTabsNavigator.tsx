@@ -18,6 +18,9 @@ const Tabs = createBottomTabNavigator<RootTabsParamList>();
 
 export default function RootTabsNavigator() {
   const { theme } = useContext(ThemeContext);
+  // const themeContext = useContext(ThemeContext);
+
+  // const { theme } = themeContext;
 
   return (
     <Tabs.Navigator>

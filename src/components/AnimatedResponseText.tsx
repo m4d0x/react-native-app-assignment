@@ -1,5 +1,8 @@
+//HomeReactionText.tsx
 import React, { useEffect, useState } from 'react';
-import { Animated, Text } from 'react-native';
+import { Animated, StyleSheet, Text } from 'react-native';
+
+import { useTheme } from '../contexts/ThemeContext';
 
 interface AnswerTextProps {
   text: string | null;
@@ -7,6 +10,7 @@ interface AnswerTextProps {
 }
 
 const AnswerText: React.FC<AnswerTextProps> = ({ text, fadeAnim }) => {
+  const theme = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const [fade] = useState(new Animated.Value(fadeAnim));
 
@@ -32,10 +36,19 @@ const AnswerText: React.FC<AnswerTextProps> = ({ text, fadeAnim }) => {
     }
   }, [text, fade, fadeAnim]);
 
+  const styles = StyleSheet.create({
+    animatedView: {
+      // position: 'relative',
+      top: 0,
+      left: 0,
+      right: 0,
+    },
+  });
+
   return (
     isVisible && (
-      <Animated.View style={{ opacity: fade }}>
-        <Text>{text}</Text>
+      <Animated.View style={[{ opacity: fade }, styles.animatedView]}>
+        <Text style={{ color: theme.theme.animatedText }}>{text}</Text>
       </Animated.View>
     )
   );

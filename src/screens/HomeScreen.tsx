@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import AnswerText from '../components/HomeReactionText';
+import AnimatedResponseText from '../components/AnimatedResponseText';
+import { ThemedButton } from '../components/ThemedButton';
+import ThemedTextInput from '../components/ThemedTextInputField';
 import { useTheme } from '../contexts/ThemeContext';
+import { storeData } from '../utils/storage';
 
 export default function HomeScreen() {
   const theme = useTheme();
@@ -10,11 +13,13 @@ export default function HomeScreen() {
   const [storedText, setHomeReactionText] = useState<string | null>(null);
   const fadeAnim = 1;
 
-  const handleYes = () => {
+  const handleYes = async () => {
+    // Gör funktionen asynkron
     if (text.trim() === '') {
       setHomeReactionText("You can't keep a secret if there is none!");
     } else {
       setHomeReactionText('Your secret is safe with me.');
+      await storeData(text); // Använd den asynkrona storeData-funktionen
     }
     setText('');
   };
@@ -26,34 +31,39 @@ export default function HomeScreen() {
 
   return (
     <View style={{ ...styles.container }}>
-      <AnswerText text={storedText} fadeAnim={fadeAnim} />
+      <View style={styles.animatedView}>
+        <AnimatedResponseText text={storedText} fadeAnim={fadeAnim} />
+      </View>
       <Text style={{ ...styles.questionText, color: theme.theme.text }}>
         What's your dirty lil´ secret?
       </Text>
-      <TextInput
-        style={{
-          ...styles.input,
-          // borderColor: theme.textBorderColor,
-          color: theme.theme.text,
-        }}
+      <ThemedTextInput
+        placeholder="Type your secret here..."
         value={text}
         onChangeText={(newText) => setText(newText)}
-        placeholder="Type here..."
-        // placeholderTextColor={theme.textPlaceholderColor}
       />
       <View style={styles.buttonContainer}>
-        <Button title="Yes" onPress={handleYes} />
-        <Button title="No" onPress={handleNo} />
+        <ThemedButton title="Post" onPress={handleYes} />
+        <ThemedButton title="Delete" onPress={handleNo} />
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  // wrapper: {
+  //   position: 'relative',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  animatedView: {
+    position: 'absolute',
+    top: '0%', // eller var du nu vill ha den
   },
   input: {
     borderWidth: 1,
@@ -66,6 +76,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '60%',
+    marginTop: 20, // Lägg till detta
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
   },
   questionText: {
     fontSize: 24,

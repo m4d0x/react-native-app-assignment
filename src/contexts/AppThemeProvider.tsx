@@ -61,8 +61,13 @@ const AppThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         theme,
         toggleTheme,
         setThemeBasedOnBoolean,
-        setThemes, // Lägg till denna rad
+        setThemes,
         useStatusBarStyle: theme.statusBarStyle,
+        buttonBackgroundColor: theme?.buttonBackgroundColor || 'defaultColor',
+        buttonTextColor: theme?.buttonTextColor || 'defaultTextColor',
+        toggleActiveColor: theme?.toggleActiveColor || 'defaultActiveColor',
+        toggleInactiveColor:
+          theme?.toggleInactiveColor || 'defaultInactiveColor',
       }}
     >
       {children}
