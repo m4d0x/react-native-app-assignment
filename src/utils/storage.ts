@@ -39,9 +39,11 @@ export const storeData = async (value: string) => {
 export const getData = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('@secret_key');
+    console.log('Fetched data:', jsonValue); // Loggar data som hämtats
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     // Error reading data
+    console.log('Error fetching data:', e); // Loggar eventuella fel
     return null;
   }
 };

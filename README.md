@@ -1,3 +1,4 @@
-//haptics?
-//kamera?
-//ljud?
+///Expo komponenter:
+
+- LinearGradient
+- AsyncStorage
