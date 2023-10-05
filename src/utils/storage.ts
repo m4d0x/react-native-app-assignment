@@ -51,39 +51,28 @@ export const getData = async () => {
   }
 };
 
-export const toggleLike = async (
-  id: string,
-  isLiked: boolean,
-  setLikes: (likes: number) => void,
-) => {
+export const toggleLike = async (id: string, isLiked: boolean) => {
   try {
     // Först, hämta den befintliga arrayen av hemligheter
     const existingData: Secret[] | null = await getData();
 
     if (!existingData) return;
 
-    let newLikesValue = 0; // För att hålla det nya antalet "likes"
-
     // Hitta rätt Secret och uppdatera dess likes
     const updatedData = existingData.map((secret) => {
       if (secret.id === id) {
         if (isLiked) {
-          newLikesValue = secret.likes - 1; // Minskar antalet likes med 1 om redan gillad
-          return { ...secret, likes: newLikesValue };
+          return { ...secret, likes: secret.likes - 1 }; // Minskar antalet likes med 1 om redan gillad
         }
-        newLikesValue = secret.likes + 1; // Ökar antalet likes med 1 om inte gillad
-        return { ...secret, likes: newLikesValue };
+        return { ...secret, likes: secret.likes + 1 }; // Ökar antalet likes med 1 om inte gillad
       }
       return secret;
     });
-
-    // Använd setLikes för att uppdatera det lokala state-värdet
-    setLikes(newLikesValue);
 
     // Omvandla till JSON och lagra
     const jsonValue = JSON.stringify(updatedData);
     await AsyncStorage.setItem('@secret_key', jsonValue);
   } catch (e) {
-    // Error-handling här
+    // Error
   }
 };

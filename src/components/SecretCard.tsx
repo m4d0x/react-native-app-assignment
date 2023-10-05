@@ -20,18 +20,19 @@ type SecretCardProps = {
 };
 
 export default function SecretCard({ secret }: SecretCardProps) {
-  const { theme } = useTheme();
-
-  const [likes, setLikes] = useState(secret.likes);
-
-  const handleLikePress = async () => {
+    const { theme } = useTheme();
+  
+    const [likes, setLikes] = useState(secret.likes); // För likes
+    const [isLiked, setIsLiked] = useState(false); // För att hålla koll på om en secret är gillad eller inte
+  
+    const handleLikePress = async () => {
+      setIsLiked(!isLiked); // Uppdatera isLiked när knappen trycks på
+      // Uppdatera det lokala state-värdet baserat på isLiked
+      setLikes(isLiked ? likes - 1 : likes + 1);
+      toggleLike(secret.id, isLiked); // Jag tog bort setLikes här, för vi redan gör det ovan
+    };
     // ...
-    // Uppdatera det lokala state-värdet baserat på isLiked
-    setLikes(isLiked ? likes - 1 : likes + 1);
-    toggleLike(secret.id, isLiked);
-  };
-  // ...
-}
+  }
 
 // framtida function för databas-anrop
 //   const handleLikePress = async () => {
