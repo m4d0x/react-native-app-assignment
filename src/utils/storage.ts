@@ -7,6 +7,7 @@ type Secret = {
   author: string;
   text: string;
   timestamp: string;
+  likes: number; // Nytt attribut för att hålla reda på antalet likes som getts till en secret
 };
 
 export const storeData = async (value: string) => {
@@ -20,6 +21,7 @@ export const storeData = async (value: string) => {
       author: 'anonymous', // Hårdkodad till "anonymous"
       text: value,
       timestamp: new Date().toISOString(),
+      likes: 0, // När en hemlighet skapas har den 0 likes
     };
 
     // Lägg till den nya hemligheten till arrayen

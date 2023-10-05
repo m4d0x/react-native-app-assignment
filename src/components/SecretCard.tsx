@@ -9,7 +9,6 @@ type Secret = {
   author: string;
   text: string;
   timestamp: string;
-  likes: number; // Nytt attribut för att hålla reda på antalet likes som getts till en secret
 };
 
 type SecretCardProps = {
