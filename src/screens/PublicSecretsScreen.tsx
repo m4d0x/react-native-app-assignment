@@ -90,11 +90,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  card: {
-    padding: 16,
-    margin: 8,
-    borderRadius: 8,
-  },
   overlay: {
     position: 'absolute',
     left: 0,
@@ -102,18 +97,23 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 50,
   },
-  cardContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  textContainer: {
-    flex: 1,
-  },
-  iconContainer: {
-    flexDirection: 'row',
-  },
-  iconSpacing: {
-    marginHorizontal: 10,
-  },
+  // card: {
+  //   padding: 16,
+  //   margin: 8,
+  //   borderRadius: 8,
+  // },
+  // cardContent: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  // },
+  // textContainer: {
+  //   flex: 1,
+  // },
+  // iconContainer: {
+  //   flexDirection: 'row',
+  // },
+  // iconSpacing: {
+  //   marginHorizontal: 10,
+  // },
 });
