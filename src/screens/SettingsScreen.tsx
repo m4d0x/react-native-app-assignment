@@ -1,6 +1,6 @@
 // SettingsScreen.tsx:
-import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import * as Haptics from 'expo-haptics';
+import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -19,6 +19,7 @@ export default function SettingsScreen() {
   };
 
   const toggleKeepAwakeCallback = (newState: boolean) => {
+    Haptics.selectionAsync(); // eller Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     if (newState) {
       activateKeepAwakeAsync();
     } else {
