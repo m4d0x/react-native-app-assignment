@@ -49,3 +49,5 @@ export const getData = async () => {
     return null;
   }
 };
+
+export const toggleLike = async (id: string) => {};
