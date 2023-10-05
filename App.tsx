@@ -16,7 +16,7 @@ function App() {
   const [sound, setSound] = useState<Audio.Sound | null>(null);
 
   function AppContent() {
-    const [soundObj, setSoundObj] = useState<Audio.Sound | null>(null); // rename from sound to soundObj
+    const [soundObj, setSoundObj] = useState<Audio.Sound | null>(null);
 
     const loadSound = async () => {
       const { sound } = await Audio.Sound.createAsync(
@@ -26,6 +26,8 @@ function App() {
           isLooping: true,
         },
       );
+
+      await sound.setVolumeAsync(0.1); // Sätter volymen till 50%
       setSoundObj(sound);
     };
 
@@ -33,6 +35,7 @@ function App() {
       loadSound();
 
       return () => {
+        // Unload the sound if it exists
         if (soundObj) {
           soundObj.unloadAsync();
         }
