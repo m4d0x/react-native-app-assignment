@@ -1,7 +1,8 @@
 //SecretCard.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import theme from 'react-native-elements/dist/config/theme';
 import { useTheme } from '../contexts/ThemeContext';
 import { toggleLike } from '../utils/storage';
 import ThemedLikeButton from './ThemedLikeButton';
@@ -21,20 +22,31 @@ type SecretCardProps = {
 export default function SecretCard({ secret }: SecretCardProps) {
   const { theme } = useTheme();
 
-  // Inuti din SecretCard-komponent
+  const [likes, setLikes] = useState(secret.likes);
+
   const handleLikePress = async () => {
-    // Notera 'async' här
-    let isLiked; // Deklarera variabeln men tilldela inget värde ännu
-
-    try {
-      isLiked = await fetchIsLikedFromDatabaseOrState(secret.id); // Använd 'await' här
-    } catch (error) {
-      console.error('Failed to fetch isLiked:', error);
-      return;
-    }
-
-    toggleLike(secret.id, isLiked); // Nu är isLiked en boolean och inte en Promise
+    // ...
+    // Uppdatera det lokala state-värdet baserat på isLiked
+    setLikes(isLiked ? likes - 1 : likes + 1);
+    toggleLike(secret.id, isLiked);
   };
+  // ...
+}
+
+// framtida function för databas-anrop
+//   const handleLikePress = async () => {
+//     // Notera 'async' här
+//     let isLiked; // Deklarera variabeln men tilldela inget värde ännu
+
+//     try {
+//       isLiked = await fetchIsLikedFromDatabaseOrState(secret.id); // Använd 'await' här
+//     } catch (error) {
+//       console.error('Failed to fetch isLiked:', error);
+//       return;
+//     }
+
+//     toggleLike(secret.id, isLiked); // Nu är isLiked en boolean och inte en Promise
+//   };
 
   return (
     <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
