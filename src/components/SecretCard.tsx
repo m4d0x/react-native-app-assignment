@@ -2,8 +2,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import ThemedLikeButton from './ThemedLikeButton';
 import { useTheme } from '../contexts/ThemeContext';
+import ThemedLikeButton from './ThemedLikeButton';
 
 type Secret = {
   id: string;
@@ -34,3 +34,7 @@ export default function SecretCard({ secret }: SecretCardProps) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  //... resterande stilar
+});
