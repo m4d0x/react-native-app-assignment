@@ -1,4 +1,5 @@
 // SettingsScreen.tsx:
+import * as Haptics from 'expo-haptics';
 import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -12,11 +13,13 @@ export default function SettingsScreen() {
   const { theme, toggleTheme, setThemeBasedOnBoolean } = useTheme();
 
   const handleToggleTheme = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
     toggleTheme();
     toggleDarkMode();
   };
 
   const toggleKeepAwakeCallback = (newState: boolean) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     if (newState) {
       activateKeepAwakeAsync();
     } else {

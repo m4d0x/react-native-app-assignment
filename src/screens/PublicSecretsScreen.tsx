@@ -38,12 +38,12 @@ export default function SecretsScreen() {
         renderItem={({ item }) => <SecretCard secret={item} />}
       />
       <LinearGradient
-        colors={['transparent', theme.background]}
-        style={[styles.overlay, { height: '15%' }]}
+        colors={['transparent', theme.themedGradientLinearTint]}
+        style={[styles.overlay, { height: '7%' }]}
       />
       <LinearGradient
-        colors={[theme.background, 'transparent']}
-        style={[styles.overlay, { top: 0, height: '15%' }]}
+        colors={[theme.themedGradientLinearTint, 'transparent']}
+        style={[styles.overlay, { top: 0, height: '7%' }]}
       />
     </View>
   );

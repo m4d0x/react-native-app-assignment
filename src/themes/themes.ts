@@ -7,6 +7,7 @@ export interface Theme {
   borderColor: string;
   text: string;
   error: string;
+  themedGradientLinearTint: string;
 
   //within App.tsx(StatusBar)
   statusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
@@ -40,6 +41,7 @@ export const lightTheme: Theme = {
   borderColor: '#ffffff',
   text: '#000000',
   error: '#ff0000',
+  themedGradientLinearTint: 'rgba(255,255,255, 1)',
   //within App.tsx(StatusBar)
   statusBarStyle: 'light',
   //within App.tsx(BottomTabNavigator)
@@ -56,7 +58,7 @@ export const lightTheme: Theme = {
   toggleActiveColor: '#2294FF',
   toggleInactiveColor: '#000000',
   //within SecretScreen
-  cardBackground: 'rgba(128, 128, 128, 0.6)',
+  cardBackground: 'rgba(128, 128, 128, 0.3)',
   cardText: '#000',
 };
 
@@ -68,6 +70,7 @@ export const darkTheme: Theme = {
   borderColor: '#000000',
   text: '#ffffff',
   error: '#ff4b4b',
+  themedGradientLinearTint: 'rgba(0, 0, 0, 0.2)',
   //within App.tsx(StatusBar)
   statusBarStyle: 'dark',
   //within App.tsx(BottomTabNavigator)
@@ -84,7 +87,7 @@ export const darkTheme: Theme = {
   toggleActiveColor: '#ff4b4b',
   toggleInactiveColor: '#717171',
   //within SecretScreen
-  cardBackground: 'rgba(255, 255, 255, 0.2)',
+  cardBackground: 'rgba(255, 255, 255, 0.3)',
   cardText: '#ff4b4b',
 };
 
