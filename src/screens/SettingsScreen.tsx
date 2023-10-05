@@ -1,4 +1,5 @@
 // SettingsScreen.tsx:
+import { useFonts } from 'expo-font';
 import * as Haptics from 'expo-haptics';
 import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import React from 'react';
@@ -41,31 +42,41 @@ export default function SettingsScreen() {
     setThemeBasedOnBoolean,
   );
 
+  const [fontsLoaded] = useFonts({
+    Spiderfingers: require('../assets/fonts/Spiderfingers-OOyA.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       {/* <Text>Settings Screen</Text> */}
       <Text style={{ ...styles.toggleHeader, color: theme.text }}>
-        Toggle Theme
+        Change Theme
       </Text>
       <TouchableOpacity onPress={toggleTheme} style={styles.TouchableOpacity}>
         <ToggleIcon
           toggleIsActive={isDarkMode}
           onPress={handleToggleTheme}
           style={styles.toggableIcon}
+          size={60}
           // iconStyle={styles.iconStyle}
         />
       </TouchableOpacity>
       <Text style={{ ...styles.toggleHeader, color: theme.text }}>
-        Toggle Keep Awake
+        Keep Awake
       </Text>
       <TouchableOpacity
         onPress={toggleKeepAwake}
-        style={styles.TouchableOpacity}
+        // style={styles.TouchableOpacity}
       >
         <ToggleIcon
           toggleIsActive={isAwake}
           onPress={toggleKeepAwake}
           style={styles.toggableIcon}
+          size={60}
           // iconColor={theme.}
           // iconStyle={styles.iconStyle}
         />
@@ -81,22 +92,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   toggleHeader: {
-    fontSize: 24,
+    fontSize: 48,
+    letterSpacing: 3,
     fontWeight: 'bold',
     marginBottom: 15,
+    fontFamily: 'Spiderfingers', // Lägg till detta
   },
   TouchableOpacity: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    width: 100,
-    height: 40,
-    borderRadius: 25,
-    // fontSize: 24,
-    // color: theme.buttonColor,
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   toggableIcon: {
-    size: 24,
-    width: 50,
-    height: 40,
+    flex: 1,
   },
 });

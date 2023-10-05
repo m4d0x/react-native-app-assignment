@@ -63,8 +63,8 @@ export default function HomeScreen() {
         onChangeText={(newText) => setText(newText)}
       />
       <View style={styles.buttonContainer}>
-        <ThemedButton title="Post" onPress={handleYes} />
         <ThemedButton title="Delete" onPress={handleNo} />
+        <ThemedButton title="Post" onPress={handleYes} />
       </View>
     </View>
   );
