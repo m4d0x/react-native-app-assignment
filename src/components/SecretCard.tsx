@@ -27,7 +27,7 @@ export default function SecretCard({ secret }: SecretCardProps) {
           <Text style={{ color: theme.cardText }}>{secret.timestamp}</Text>
         </View>
         <View style={styles.iconContainer}>
-          <ThemedLikeButton />
+          <ThemedLikeButton onPress={isLiked} />
           {/* Här kan du lägga till fler ikoner om du vill */}
         </View>
       </View>

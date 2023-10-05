@@ -2,9 +2,9 @@
 import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient'; // Ändrad import
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import { FlatList, StyleSheet, View } from 'react-native';
 
+import SecretCard from '../components/SecretCard';
 import { useTheme } from '../contexts/ThemeContext';
 import { getData } from '../utils/storage';
 
@@ -32,6 +32,11 @@ export default function SecretsScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <FlatList
+        data={secrets}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <SecretCard secret={item} />}
+      />
+      {/* <FlatList
         data={secrets}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
@@ -68,7 +73,7 @@ export default function SecretsScreen() {
             </View>
           </View>
         )}
-      />
+      /> */}
       <LinearGradient
         colors={['transparent', theme.background]}
         style={[styles.overlay, { height: '15%' }]}
