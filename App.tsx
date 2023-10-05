@@ -3,12 +3,12 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { Audio } from 'expo-av';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native'; // Lägg till Button för att skapa en temaväxlingsknapp
+import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import AppThemeProvider from './src/contexts/AppThemeProvider';
 import { KeepAwakeProvider } from './src/contexts/KeepAwakeContext';
-import { useTheme } from './src/contexts/ThemeContext'; // Lägg till useThemeToggle
+import { useTheme } from './src/contexts/ThemeContext';
 import { useStatusBarStyle } from './src/hooks/useStatusBarStyle';
 import RootTabsNavigator from './src/navigators/RootTabsNavigator';
 
@@ -27,7 +27,7 @@ function App() {
         },
       );
 
-      await sound.setVolumeAsync(0.1); // Sätter volymen till 50%
+      await sound.setVolumeAsync(0.1); // Sätter volymen till 10%
       setSoundObj(sound);
     };
 
@@ -64,8 +64,6 @@ function App() {
         card: theme.background,
         text: theme.text,
         border: theme.borderColor,
-        // activeIconColor: theme.tabBarActiveTintColor,
-        // inactiveIconColor: theme.tabBarInactiveTintColor,
       },
     };
 
