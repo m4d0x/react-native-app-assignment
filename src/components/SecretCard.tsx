@@ -36,5 +36,20 @@ export default function SecretCard({ secret }: SecretCardProps) {
 }
 
 const styles = StyleSheet.create({
-  //... resterande stilar
+  card: {
+    padding: 16,
+    margin: 8,
+    borderRadius: 8,
+  },
+  cardContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  textContainer: {
+    flex: 1,
+  },
+  iconContainer: {
+    flexDirection: 'row',
+  },
 });
