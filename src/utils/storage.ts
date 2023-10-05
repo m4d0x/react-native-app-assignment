@@ -7,8 +7,10 @@ type Secret = {
   author: string;
   text: string;
   timestamp: string;
+  likes: number; // Nytt attribut för att hålla reda på antalet likes som getts till en secret
 };
 
+//Funktion för att lagra en hemlighet
 export const storeData = async (value: string) => {
   try {
     // Först, hämta den befintliga arrayen av hemligheter
@@ -20,6 +22,7 @@ export const storeData = async (value: string) => {
       author: 'anonymous', // Hårdkodad till "anonymous"
       text: value,
       timestamp: new Date().toISOString(),
+      likes: 0, // När en hemlighet skapas har den 0 likes
     };
 
     // Lägg till den nya hemligheten till arrayen
@@ -45,5 +48,31 @@ export const getData = async () => {
     // Error reading data
     console.log('Error fetching data:', e); // Loggar eventuella fel
     return null;
+  }
+};
+
+export const toggleLike = async (id: string, isLiked: boolean) => {
+  try {
+    // Först, hämta den befintliga arrayen av hemligheter
+    const existingData: Secret[] | null = await getData();
+
+    if (!existingData) return;
+
+    // Hitta rätt Secret och uppdatera dess likes
+    const updatedData = existingData.map((secret) => {
+      if (secret.id === id) {
+        if (isLiked) {
+          return { ...secret, likes: secret.likes - 1 }; // Minskar antalet likes med 1 om redan gillad
+        }
+        return { ...secret, likes: secret.likes + 1 }; // Ökar antalet likes med 1 om inte gillad
+      }
+      return secret;
+    });
+
+    // Omvandla till JSON och lagra
+    const jsonValue = JSON.stringify(updatedData);
+    await AsyncStorage.setItem('@secret_key', jsonValue);
+  } catch (e) {
+    // Error
   }
 };
