@@ -14,12 +14,11 @@ export default function HomeScreen() {
   const fadeAnim = 1;
 
   const handleYes = async () => {
-    // Gör funktionen asynkron
     if (text.trim() === '') {
       setHomeReactionText("You can't keep a secret if there is none!");
     } else {
       setHomeReactionText('Your secret is safe with me.');
-      await storeData(text); // Använd den asynkrona storeData-funktionen
+      await storeData(text); // Lagrar texten
     }
     setText('');
   };
