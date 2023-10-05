@@ -13,6 +13,7 @@ type Secret = {
   author: string;
   text: string;
   timestamp: string;
+  likes: number;
 };
 
 export default function SecretsScreen() {
@@ -36,44 +37,6 @@ export default function SecretsScreen() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <SecretCard secret={item} />}
       />
-      {/* <FlatList
-        data={secrets}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View
-            style={[styles.card, { backgroundColor: theme.cardBackground }]}
-          >
-            <View style={styles.cardContent}>
-              <View style={styles.textContainer}>
-                <Text style={{ color: theme.cardText }}>
-                  {item.author} wrote:
-                </Text>
-                <Text style={{ color: theme.cardText }}>{item.text}</Text>
-                <Text style={{ color: theme.cardText }}>{item.timestamp}</Text>
-              </View>
-
-              <View style={styles.iconContainer}>
-                <AntDesign
-                  name="like1"
-                  size={24}
-                  color={theme.tabBarActiveTintColor}
-                />
-                <AntDesign
-                  name="dislike1"
-                  size={24}
-                  color={theme.tabBarActiveTintColor}
-                  style={styles.iconSpacing}
-                />
-                <AntDesign
-                  name="heart"
-                  size={24}
-                  color={theme.tabBarActiveTintColor}
-                />
-              </View>
-            </View>
-          </View>
-        )}
-      /> */}
       <LinearGradient
         colors={['transparent', theme.background]}
         style={[styles.overlay, { height: '15%' }]}
@@ -97,23 +60,4 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 50,
   },
-  // card: {
-  //   padding: 16,
-  //   margin: 8,
-  //   borderRadius: 8,
-  // },
-  // cardContent: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'center',
-  // },
-  // textContainer: {
-  //   flex: 1,
-  // },
-  // iconContainer: {
-  //   flexDirection: 'row',
-  // },
-  // iconSpacing: {
-  //   marginHorizontal: 10,
-  // },
 });
