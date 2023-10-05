@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   questionText: {
-    fontSize: 24,
+    fontSize: 28, // Uppdaterad storlek
+    letterSpacing: 3, // Lägg till detta för mellanrum mellan bokstäver
     fontWeight: 'bold',
     marginBottom: 15,
   },
