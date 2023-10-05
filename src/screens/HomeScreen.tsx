@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics'; // Lägg till denna rad
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
