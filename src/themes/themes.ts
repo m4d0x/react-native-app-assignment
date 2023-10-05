@@ -49,10 +49,10 @@ export const lightTheme: Theme = {
   tabBarInactiveTintColor: '#303',
   //within HomeScreen
   buttonTextColor: '#ffffff',
-  buttonBackgroundColor: '#2294FF',
+  buttonBackgroundColor: '#000000',
   textInputFocusedBorderColor: '#2294FF',
   textInputUnfocusedBorderColor: '#C8C8C8',
-  textInputFieldPlaceholderTextColor: '#000000',
+  textInputFieldPlaceholderTextColor: 'rgba(0, 0, 0, 0.5)',
   animatedText: '#ff0000',
   //within SettingsScreen
   toggleActiveColor: '#2294FF',
@@ -80,8 +80,8 @@ export const darkTheme: Theme = {
   buttonTextColor: '#000000',
   buttonBackgroundColor: '#ff4b4b',
   textInputFocusedBorderColor: '#ff0000',
-  textInputUnfocusedBorderColor: '#717171',
-  textInputFieldPlaceholderTextColor: '#ff4b4b',
+  textInputUnfocusedBorderColor: '#2F2F2F',
+  textInputFieldPlaceholderTextColor: 'rgba(255, 0, 0, 0.7)',
   animatedText: '#ff0000',
   //within SettingsScreen
   toggleActiveColor: '#ff4b4b',

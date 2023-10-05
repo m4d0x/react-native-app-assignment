@@ -1,3 +1,4 @@
+import { useFonts } from 'expo-font';
 import * as Haptics from 'expo-haptics'; // Lägg till denna rad
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -13,6 +14,14 @@ export default function HomeScreen() {
   const [text, setText] = useState<string>('');
   const [storedText, setHomeReactionText] = useState<string | null>(null);
   const fadeAnim = 1;
+
+  const [fontsLoaded] = useFonts({
+    Spiderfingers: require('../assets/fonts/Spiderfingers-OOyA.ttf'), // Ändra här
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const handleYes = async () => {
     if (text.trim() === '') {
@@ -37,7 +46,15 @@ export default function HomeScreen() {
       <View style={styles.animatedView}>
         <AnimatedResponseText text={storedText} fadeAnim={fadeAnim} />
       </View>
-      <Text style={{ ...styles.questionText, color: theme.theme.text }}>
+      <Text
+        style={{
+          ...styles.questionText,
+          color: theme.theme.text,
+          fontFamily: 'Spiderfingers',
+        }}
+      >
+        {' '}
+        {/* Använd det anpassade teckensnittet här */}
         What's your dirty lil´ secret?
       </Text>
       <ThemedTextInput
@@ -46,8 +63,8 @@ export default function HomeScreen() {
         onChangeText={(newText) => setText(newText)}
       />
       <View style={styles.buttonContainer}>
-        <ThemedButton title="Post" onPress={handleYes} />
         <ThemedButton title="Delete" onPress={handleNo} />
+        <ThemedButton title="Post" onPress={handleYes} />
       </View>
     </View>
   );
@@ -91,7 +108,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   questionText: {
-    fontSize: 24,
+    fontSize: 28, // Uppdaterad storlek
+    letterSpacing: 3, // Lägg till detta för mellanrum mellan bokstäver
     fontWeight: 'bold',
     marginBottom: 15,
   },
