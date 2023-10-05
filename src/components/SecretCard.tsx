@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { useTheme } from '../contexts/ThemeContext';
+import { toggleLike } from '../utils/storage';
 
 type Secret = {
   id: string;
@@ -17,6 +18,11 @@ type SecretCardProps = {
 
 export default function SecretCard({ secret }: SecretCardProps) {
   const { theme } = useTheme();
+
+  const handleLikePress = () => {
+    toggleLike(secret.id); // Anropa toggleLike med rätt Secret id
+  };
+
   return (
     <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
       <View style={styles.cardContent}>
