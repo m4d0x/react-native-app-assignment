@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import theme from 'react-native-elements/dist/config/theme';
 import { useTheme } from '../contexts/ThemeContext';
 import { toggleLike } from '../utils/storage';
 import ThemedLikeButton from './ThemedLikeButton';
@@ -20,34 +19,17 @@ type SecretCardProps = {
 };
 
 export default function SecretCard({ secret }: SecretCardProps) {
-    const { theme } = useTheme();
-  
-    const [likes, setLikes] = useState(secret.likes); // För likes
-    const [isLiked, setIsLiked] = useState(false); // För att hålla koll på om en secret är gillad eller inte
-  
-    const handleLikePress = async () => {
-      setIsLiked(!isLiked); // Uppdatera isLiked när knappen trycks på
-      // Uppdatera det lokala state-värdet baserat på isLiked
-      setLikes(isLiked ? likes - 1 : likes + 1);
-      toggleLike(secret.id, isLiked); // Jag tog bort setLikes här, för vi redan gör det ovan
-    };
-    // ...
-  }
+  const { theme } = useTheme();
 
-// framtida function för databas-anrop
-//   const handleLikePress = async () => {
-//     // Notera 'async' här
-//     let isLiked; // Deklarera variabeln men tilldela inget värde ännu
+  const [likes, setLikes] = useState(secret.likes); // För likes
+  const [isLiked, setIsLiked] = useState(false); // För att hålla koll på om en secret är gillad eller inte
 
-//     try {
-//       isLiked = await fetchIsLikedFromDatabaseOrState(secret.id); // Använd 'await' här
-//     } catch (error) {
-//       console.error('Failed to fetch isLiked:', error);
-//       return;
-//     }
-
-//     toggleLike(secret.id, isLiked); // Nu är isLiked en boolean och inte en Promise
-//   };
+  const handleLikePress = async () => {
+    setIsLiked(!isLiked); // Uppdatera isLiked när knappen trycks på
+    // Uppdatera det lokala state-värdet baserat på isLiked
+    setLikes(isLiked ? likes - 1 : likes + 1);
+    toggleLike(secret.id, isLiked);
+  };
 
   return (
     <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
