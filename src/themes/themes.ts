@@ -43,7 +43,7 @@ export const lightTheme: Theme = {
   //within App.tsx(StatusBar)
   statusBarStyle: 'light',
   //within App.tsx(BottomTabNavigator)
-  tabBarActiveTintColor: '#ff0000',
+  tabBarActiveTintColor: '#2294FF',
   tabBarInactiveTintColor: '#303',
   //within HomeScreen
   buttonTextColor: '#ffffff',
