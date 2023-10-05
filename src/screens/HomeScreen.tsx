@@ -1,3 +1,4 @@
+import { useFonts } from 'expo-font'; // <-- Ny import här
 import * as Haptics from 'expo-haptics'; // Lägg till denna rad
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -13,6 +14,14 @@ export default function HomeScreen() {
   const [text, setText] = useState<string>('');
   const [storedText, setHomeReactionText] = useState<string | null>(null);
   const fadeAnim = 1;
+
+  const [fontsLoaded] = useFonts({
+    CustomFontName: require('../assets/fonts/YourFontFile.otf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const handleYes = async () => {
     if (text.trim() === '') {
