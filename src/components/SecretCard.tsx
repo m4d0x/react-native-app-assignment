@@ -11,3 +11,7 @@ type Secret = {
   text: string;
   timestamp: string;
 };
+
+type SecretCardProps = {
+  secret: Secret;
+};
