@@ -31,19 +31,21 @@ export default function SecretsScreen() {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <FlatList
         data={secrets}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <SecretCard secret={item} />}
       />
       <LinearGradient
-        colors={['transparent', theme.themedGradientLinearTint]}
-        style={[styles.overlay, { height: '7%' }]}
+        colors={['transparent', theme.colors.themedGradientLinearTint]}
+        style={[styles.overlay, { height: '25%' }]}
       />
       <LinearGradient
-        colors={[theme.themedGradientLinearTint, 'transparent']}
-        style={[styles.overlay, { top: 0, height: '7%' }]}
+        colors={[theme.colors.themedGradientLinearTint, 'transparent']}
+        style={[styles.overlay, { top: 0, height: '25%' }]}
       />
     </View>
   );

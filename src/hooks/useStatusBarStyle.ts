@@ -8,6 +8,6 @@ export const useStatusBarStyle = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    StatusBar.setBarStyle(theme.statusBarStyle as StatusBarStyle, true);
+    StatusBar.setBarStyle(theme.colors.statusBarStyle as StatusBarStyle, true);
   }, [theme]);
 };

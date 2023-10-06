@@ -12,7 +12,6 @@ interface ThemeProviderProps {
 const AppThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(lightTheme);
 
-  // Inuti AppThemeProvider.tsx
   const setThemes = (newTheme: Theme) => {
     setTheme(newTheme);
     AsyncStorage.setItem('theme', JSON.stringify(newTheme));
@@ -37,7 +36,6 @@ const AppThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     });
   };
 
-  // Ny funktion för att sätta temat baserat på en boolean
   const setThemeBasedOnBoolean = (isDarkMode: boolean) => {
     const newTheme = isDarkMode ? darkTheme : lightTheme;
     setTheme(newTheme);
@@ -62,12 +60,6 @@ const AppThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         toggleTheme,
         setThemeBasedOnBoolean,
         setThemes,
-        useStatusBarStyle: theme.statusBarStyle,
-        buttonBackgroundColor: theme?.buttonBackgroundColor || 'defaultColor',
-        buttonTextColor: theme?.buttonTextColor || 'defaultTextColor',
-        toggleActiveColor: theme?.toggleActiveColor || 'defaultActiveColor',
-        toggleInactiveColor:
-          theme?.toggleInactiveColor || 'defaultInactiveColor',
       }}
     >
       {children}

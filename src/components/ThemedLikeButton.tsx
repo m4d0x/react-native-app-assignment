@@ -4,7 +4,7 @@ import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { useTheme } from '../contexts/ThemeContext';
-import { useToggle } from '../hooks/useToggle'; // ändra sökvägen till din useToggle
+import { useToggle } from '../hooks/useToggle';
 
 interface ThemedLikeButtonProps {
   onPress: () => void;
@@ -15,7 +15,7 @@ const ThemedLikeButton: React.FC<ThemedLikeButtonProps> = ({
   onPress,
   style,
 }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
   const [isLiked, toggleLike] = useToggle(
     false,
     (currentState) => !currentState,
@@ -30,9 +30,13 @@ const ThemedLikeButton: React.FC<ThemedLikeButtonProps> = ({
   return (
     <TouchableOpacity onPress={handlePress} style={style}>
       <AntDesign
-        name={isLiked ? 'heart' : 'hearto'}
+        name={isLiked ? 'hearto' : 'heart'}
         size={24}
-        color={isLiked ? theme.toggleActiveColor : theme.toggleInactiveColor}
+        color={
+          isLiked
+            ? theme.colors.toggleActiveColor
+            : theme.colors.toggleActiveColor
+        }
       />
     </TouchableOpacity>
   );

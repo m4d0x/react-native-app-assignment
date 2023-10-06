@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { useTheme } from '../contexts/ThemeContext'; // Anpassa detta efter din faktiska import
-
-// type ButtonProps = React.ComponentProps<typeof Button>;
+import { useTheme } from '../contexts/ThemeContext';
 
 interface ThemedButtonProps {
   title: string;
   onPress: () => void;
-  // ... Fler props om nödvändigt
 }
 
 export const ThemedButton: React.FC<ThemedButtonProps> = ({
@@ -16,18 +13,18 @@ export const ThemedButton: React.FC<ThemedButtonProps> = ({
   onPress,
   ...rest
 }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   return (
     <View>
       <TouchableOpacity
         style={[
           styles.button,
-          { backgroundColor: theme.buttonBackgroundColor },
+          { backgroundColor: theme.colors.buttonBackgroundColor },
         ]}
         onPress={onPress}
       >
-        <Text style={[styles.text, { color: theme.buttonTextColor }]}>
+        <Text style={[styles.text, { color: theme.colors.buttonTextColor }]}>
           {title}
         </Text>
       </TouchableOpacity>

@@ -7,7 +7,7 @@ import {
   TextStyle,
 } from 'react-native';
 
-import ThemeContext from '../contexts/ThemeContext'; // Ersätt med din faktiska import
+import ThemeContext from '../contexts/ThemeContext';
 
 interface ThemedTextInputFieldProps {
   enterKeyHint?: EnterKeyHintTypeOptions;
@@ -15,9 +15,8 @@ interface ThemedTextInputFieldProps {
   selectTextOnFocus?: boolean;
   placeholder?: string;
   style?: StyleProp<TextStyle>;
-  value?: string; // Lägg till denna
-  onChangeText?: (newText: string) => void; // och denna
-  // ... Fler props om nödvändigt
+  value?: string;
+  onChangeText?: (newText: string) => void;
 }
 
 export default function ThemedTextInput(props: ThemedTextInputFieldProps) {
@@ -33,9 +32,9 @@ export default function ThemedTextInput(props: ThemedTextInputFieldProps) {
   let borderColor;
 
   if (isFocused) {
-    borderColor = theme.textInputFocusedBorderColor;
+    borderColor = theme.colors.textInputFocusedBorderColor;
   } else {
-    borderColor = theme.textInputUnfocusedBorderColor;
+    borderColor = theme.colors.textInputUnfocusedBorderColor;
   }
 
   return (
@@ -49,13 +48,13 @@ export default function ThemedTextInput(props: ThemedTextInputFieldProps) {
           width: '90%',
           minHeight: 40,
           paddingHorizontal: 10,
-          color: theme.text, // Lägg till denna rad för att sätta textfärgen
+          color: theme.colors.text,
         },
         props.style,
       ]}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
-      placeholderTextColor={theme.textInputFieldPlaceholderTextColor}
+      placeholderTextColor={theme.colors.textInputFieldPlaceholderTextColor}
       enterKeyHint={props.enterKeyHint}
       secureTextEntry={props.secureTextEntry}
       selectTextOnFocus={props.selectTextOnFocus}
