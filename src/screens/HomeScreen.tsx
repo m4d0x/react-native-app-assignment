@@ -38,7 +38,20 @@ export default function HomeScreen() {
   const handleNo = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); // Medium feedback
     setText('');
-    setHomeReactionText('Catchy text for the "No" button.');
+    const catchyTexts = [
+      "Cold feet? Your secret's still safe.",
+      'Changed your mind? No harm done.',
+      'Backing out? Wise choice, perhaps.',
+      "Hesitant, aren't we? It's okay.",
+      'Your secret, your rules. No pressure.',
+      "Choosing silence? That's golden.",
+      'Not ready yet? Take your time.',
+      'A secret kept is a secret safe.',
+      'Silence is an answer too.',
+      'Kept it in? Maybe for the best.',
+    ];
+    const randomIndex = Math.floor(Math.random() * catchyTexts.length);
+    setHomeReactionText(catchyTexts[randomIndex]);
   };
 
   return (

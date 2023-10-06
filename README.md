@@ -23,7 +23,12 @@ För att bygga och köra detta projekt, följ stegen nedan:
    npm install
    \`\`\`
 
-4. Kör Expo-servern
+4. Lägg till valfri mp3-ljudfil i ./src/assets/audio (ej postat mot git)
+   \`\`\`
+   Ändra följande rad inuti App.tsx för den ljudfil du vill ha spelande i bakgrunden; require('./src/assets/audio/ofeliasdream.mp3'),
+   \`\`\`
+
+5. Kör Expo-servern
    \`\`\`
    npm start/expo start
    \`\`\`

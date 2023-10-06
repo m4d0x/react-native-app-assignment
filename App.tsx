@@ -41,16 +41,16 @@ function App() {
     }, []);
     const { theme } = useTheme();
 
-    useStatusBarStyle();
-    const [statusBarStyle, setStatusBarStyle] = useState<
-      'auto' | 'inverted' | 'light' | 'dark'
-    >('auto');
+    // useStatusBarStyle();
+    // const [statusBarStyle, setStatusBarStyle] = useState<
+    //   'auto' | 'inverted' | 'light' | 'dark'
+    // >('auto');
 
-    useEffect(() => {
-      setStatusBarStyle(
-        theme.colors.statusBarStyle as 'auto' | 'inverted' | 'light' | 'dark',
-      );
-    }, [theme]);
+    // useEffect(() => {
+    //   setStatusBarStyle(
+    //     theme.colors.statusBarStyle as 'auto' | 'inverted' | 'light' | 'dark',
+    //   );
+    // }, [theme]);
 
     const setTheme = {
       ...DefaultTheme,
