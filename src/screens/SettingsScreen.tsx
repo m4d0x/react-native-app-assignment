@@ -53,7 +53,7 @@ export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       {/* <Text>Settings Screen</Text> */}
-      <Text style={{ ...styles.toggleHeader, color: theme.text }}>
+      <Text style={{ ...styles.toggleHeader, color: theme.colors.text }}>
         Change Theme
       </Text>
       <TouchableOpacity onPress={toggleTheme} style={styles.TouchableOpacity}>
@@ -65,7 +65,7 @@ export default function SettingsScreen() {
           // iconStyle={styles.iconStyle}
         />
       </TouchableOpacity>
-      <Text style={{ ...styles.toggleHeader, color: theme.text }}>
+      <Text style={{ ...styles.toggleHeader, color: theme.colors.text }}>
         Keep Awake
       </Text>
       <TouchableOpacity

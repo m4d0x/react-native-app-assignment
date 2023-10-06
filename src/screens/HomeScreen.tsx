@@ -10,13 +10,13 @@ import { useTheme } from '../contexts/ThemeContext';
 import { storeData } from '../utils/storage';
 
 export default function HomeScreen() {
-  const theme = useTheme();
+  const { theme } = useTheme();
   const [text, setText] = useState<string>('');
   const [storedText, setHomeReactionText] = useState<string | null>(null);
   const fadeAnim = 1;
 
   const [fontsLoaded] = useFonts({
-    Spiderfingers: require('../assets/fonts/Spiderfingers-OOyA.ttf'), // Ändra här
+    Spiderfingers: require('../assets/fonts/Spiderfingers-OOyA.ttf'),
   });
 
   if (!fontsLoaded) {
@@ -49,12 +49,11 @@ export default function HomeScreen() {
       <Text
         style={{
           ...styles.questionText,
-          color: theme.theme.text,
+          color: theme.colors.text,
           fontFamily: 'Spiderfingers',
         }}
       >
         {' '}
-        {/* Använd det anpassade teckensnittet här */}
         What's your dirty lil´ secret?
       </Text>
       <ThemedTextInput
@@ -71,11 +70,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  // wrapper: {
-  //   position: 'relative',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -83,7 +77,7 @@ const styles = StyleSheet.create({
   },
   animatedView: {
     position: 'absolute',
-    top: '0%', // eller var du nu vill ha den
+    top: '0%',
   },
   input: {
     borderWidth: 1,
@@ -96,7 +90,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '60%',
-    marginTop: 20, // Lägg till detta
+    marginTop: 20,
   },
   button: {
     alignItems: 'center',
@@ -108,8 +102,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   questionText: {
-    fontSize: 28, // Uppdaterad storlek
-    letterSpacing: 3, // Lägg till detta för mellanrum mellan bokstäver
+    fontSize: 28,
+    letterSpacing: 3,
     fontWeight: 'bold',
     marginBottom: 15,
   },

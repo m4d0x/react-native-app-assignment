@@ -10,7 +10,7 @@ interface AnswerTextProps {
 }
 
 const AnswerText: React.FC<AnswerTextProps> = ({ text, fadeAnim }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const [fade] = useState(new Animated.Value(fadeAnim));
 
@@ -48,7 +48,7 @@ const AnswerText: React.FC<AnswerTextProps> = ({ text, fadeAnim }) => {
   return (
     isVisible && (
       <Animated.View style={[{ opacity: fade }, styles.animatedView]}>
-        <Text style={{ color: theme.theme.animatedText }}>{text}</Text>
+        <Text style={{ color: theme.colors.animatedText }}>{text}</Text>
       </Animated.View>
     )
   );

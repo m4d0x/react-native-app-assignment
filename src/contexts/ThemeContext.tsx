@@ -4,15 +4,10 @@ import { createContext, useContext } from 'react';
 import { Theme } from '../themes/themes';
 
 interface ThemeContextProps {
-  theme: Theme;
+  theme: Theme; // Detta inkluderar nu också colors för att kunna avända 'theme.colors.theColor' varsomhelst i appen
   toggleTheme: () => void;
   setThemes: (newTheme: Theme) => void;
   setThemeBasedOnBoolean: (isDarkMode: boolean) => void;
-  useStatusBarStyle: 'auto' | 'inverted' | 'light' | 'dark';
-  buttonTextColor: string;
-  buttonBackgroundColor: string;
-  toggleActiveColor: string;
-  toggleInactiveColor: string;
 }
 
 const ThemeContext = createContext<ThemeContextProps | null>(null);

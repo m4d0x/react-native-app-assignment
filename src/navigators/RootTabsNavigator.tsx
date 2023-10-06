@@ -1,9 +1,8 @@
 import { Fontisto } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useContext } from 'react';
 import { Text } from 'react-native';
 
-import ThemeContext from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/ThemeContext';
 import HomeScreen from '../screens/HomeScreen';
 import PublicSecretsScreen from '../screens/PublicSecretsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -17,10 +16,7 @@ type RootTabsParamList = {
 const Tabs = createBottomTabNavigator<RootTabsParamList>();
 
 export default function RootTabsNavigator() {
-  const { theme } = useContext(ThemeContext);
-  // const themeContext = useContext(ThemeContext);
-
-  // const { theme } = themeContext;
+  const { theme } = useTheme();
 
   return (
     <Tabs.Navigator>
@@ -32,8 +28,8 @@ export default function RootTabsNavigator() {
             <Text
               style={{
                 color: props.focused
-                  ? theme.tabBarActiveTintColor
-                  : theme.tabBarInactiveTintColor,
+                  ? theme.colors.tabBarActiveTintColor
+                  : theme.colors.tabBarInactiveTintColor,
               }}
             >
               Secrets
@@ -45,8 +41,8 @@ export default function RootTabsNavigator() {
               size={props.size}
               color={
                 props.focused
-                  ? theme.tabBarActiveTintColor
-                  : theme.tabBarInactiveTintColor
+                  ? theme.colors.tabBarActiveTintColor
+                  : theme.colors.tabBarInactiveTintColor
               }
             />
           ),
@@ -60,8 +56,8 @@ export default function RootTabsNavigator() {
             <Text
               style={{
                 color: props.focused
-                  ? theme.tabBarActiveTintColor
-                  : theme.tabBarInactiveTintColor,
+                  ? theme.colors.tabBarActiveTintColor
+                  : theme.colors.tabBarInactiveTintColor,
               }}
             >
               Secrets
@@ -73,8 +69,8 @@ export default function RootTabsNavigator() {
               size={props.size}
               color={
                 props.focused
-                  ? theme.tabBarActiveTintColor
-                  : theme.tabBarInactiveTintColor
+                  ? theme.colors.tabBarActiveTintColor
+                  : theme.colors.tabBarInactiveTintColor
               }
             />
           ),
@@ -88,8 +84,8 @@ export default function RootTabsNavigator() {
             <Text
               style={{
                 color: props.focused
-                  ? theme.tabBarActiveTintColor
-                  : theme.tabBarInactiveTintColor,
+                  ? theme.colors.tabBarActiveTintColor
+                  : theme.colors.tabBarInactiveTintColor,
               }}
             >
               Secrets
@@ -101,8 +97,8 @@ export default function RootTabsNavigator() {
               size={props.size}
               color={
                 props.focused
-                  ? theme.tabBarActiveTintColor
-                  : theme.tabBarInactiveTintColor
+                  ? theme.colors.tabBarActiveTintColor
+                  : theme.colors.tabBarInactiveTintColor
               }
             />
           ),

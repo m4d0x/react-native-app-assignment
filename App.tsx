@@ -13,8 +13,6 @@ import { useStatusBarStyle } from './src/hooks/useStatusBarStyle';
 import RootTabsNavigator from './src/navigators/RootTabsNavigator';
 
 function App() {
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
-
   function AppContent() {
     const [soundObj, setSoundObj] = useState<Audio.Sound | null>(null);
 
@@ -41,16 +39,16 @@ function App() {
         }
       };
     }, []);
+    const { theme } = useTheme();
 
     useStatusBarStyle();
     const [statusBarStyle, setStatusBarStyle] = useState<
       'auto' | 'inverted' | 'light' | 'dark'
     >('auto');
-    const { theme } = useTheme();
 
     useEffect(() => {
       setStatusBarStyle(
-        theme.statusBarStyle as 'auto' | 'inverted' | 'light' | 'dark',
+        theme.colors.statusBarStyle as 'auto' | 'inverted' | 'light' | 'dark',
       );
     }, [theme]);
 
@@ -58,12 +56,10 @@ function App() {
       ...DefaultTheme,
       colors: {
         ...DefaultTheme.colors,
-        primary: theme.primary,
-        secondary: theme.secondary,
-        background: theme.background,
-        card: theme.background,
-        text: theme.text,
-        border: theme.borderColor,
+        background: theme.colors.background ?? DefaultTheme.colors.background,
+        card: theme.colors.background ?? DefaultTheme.colors.card,
+        text: theme.colors.text ?? DefaultTheme.colors.text,
+        border: theme.colors.borderColor ?? DefaultTheme.colors.border,
       },
     };
 
@@ -71,7 +67,7 @@ function App() {
       <KeepAwakeProvider>
         <SafeAreaProvider>
           <NavigationContainer theme={setTheme}>
-            <StatusBar style={theme.statusBarStyle} />
+            <StatusBar />
             <RootTabsNavigator />
           </NavigationContainer>
         </SafeAreaProvider>
